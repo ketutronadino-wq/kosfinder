@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'core/config.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (AppConfig.isConfigured) {
+    await Supabase.initialize(
+      url: AppConfig.supabaseUrl,
+      // ignore: deprecated_member_use
+      anonKey: AppConfig.supabaseAnonKey,
+    );
+  }
+
   runApp(const MyApp());
 }
 
