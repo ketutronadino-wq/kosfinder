@@ -5,7 +5,7 @@ import 'core/config.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (AppConfig.isConfigured) {
+  if (AppConfig.isConfigured && AppConfig.isValidUrl(AppConfig.supabaseUrl)) {
     await Supabase.initialize(
       url: AppConfig.supabaseUrl,
       // ignore: deprecated_member_use
