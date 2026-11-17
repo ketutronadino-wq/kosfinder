@@ -1,22 +1,15 @@
-/// Konfigurasi aplikasi yang membaca kredensial dari environment (--dart-define)
 class AppConfig {
-  /// URL proyek Supabase, dibaca dari --dart-define=SUPABASE_URL=...
-  static const String supabaseUrl = String.fromEnvironment('SUPABASE_URL');
+  // Konfigurasi Supabase asli
+  static const String supabaseUrl = 'https://dzdvdyaxjqbfaevkypvf.supabase.co';
+  
+  // Anon Key dari Supabase
+  static const String supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6ZHZkeWF4anFiZmFldmt5cHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MDI4NDUsImV4cCI6MjExMDQ3ODg0NX0.l7AbRAVMBPSnzNc05uGFOem7ArW0xDBdTlzBL7dnGMQ';
 
-  /// Anon key proyek Supabase, dibaca dari --dart-define=SUPABASE_ANON_KEY=...
-  static const String supabaseAnonKey =
-      String.fromEnvironment('SUPABASE_ANON_KEY');
+  // Cek apakah URL sudah diisi (bukan kosong)
+  static bool get isConfigured => supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
 
-  /// Memeriksa apakah kredensial Supabase sudah diset melalui --dart-define
-  static bool get isConfigured =>
-      supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
-
-  /// Memvalidasi format URL Supabase (wajib memiliki skema http/https dan host yang valid)
+  // Cek format URL valid (harus diawali http/https)
   static bool isValidUrl(String url) {
-    if (url.trim().isEmpty) return false;
-    final uri = Uri.tryParse(url.trim());
-    return uri != null &&
-        (uri.scheme == 'https' || uri.scheme == 'http') &&
-        uri.host.isNotEmpty;
+    return url.startsWith('http://') || url.startsWith('https://');
   }
 }
