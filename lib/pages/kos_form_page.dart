@@ -22,6 +22,7 @@ class _KosFormPageState extends State<KosFormPage> {
   final _areaCtrl = TextEditingController();
   final _priceCtrl = TextEditingController();
   final _facilitiesCtrl = TextEditingController();
+  final _whatsappCtrl = TextEditingController();
 
   // gender / tipe kos
   String _type = 'Campur';
@@ -71,6 +72,7 @@ class _KosFormPageState extends State<KosFormPage> {
       // the owner_id is the logged‑in user
       'owner_id': supa.auth.currentUser?.id,
       'is_active': true,
+      'whatsapp_number': _whatsappCtrl.text.trim(),
     };
 
     try {
@@ -164,6 +166,15 @@ class _KosFormPageState extends State<KosFormPage> {
               ),
               const SizedBox(height: 12),
               // ---- Fasilitas (comma‑separated) ----
+TextFormField(
+  controller: _whatsappCtrl,
+  decoration: const InputDecoration(
+    labelText: 'Nomor WhatsApp (contoh: 628123...)',
+    border: OutlineInputBorder(),
+  ),
+  keyboardType: TextInputType.phone,
+  validator: (v) => v == null || v.isEmpty ? 'Wajib diisi' : null,
+),
               TextFormField(
                 controller: _facilitiesCtrl,
                 decoration: const InputDecoration(

@@ -1,14 +1,14 @@
 class AppConfig {
-  // Konfigurasi Supabase asli
-  static const String supabaseUrl = 'https://dzdvdyaxjqbfaevkypvf.supabase.co';
+  // URL Project Supabase BARU
+  static const String supabaseUrl = 'https://ondjfadwdbhtpitkyhhd.supabase.co';
   
-  // Anon Key dari Supabase
-  static const String supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6ZHZkeWF4anFiZmFldmt5cHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5MDI4NDUsImV4cCI6MjExMDQ3ODg0NX0.l7AbRAVMBPSnzNc05uGFOem7ArW0xDBdTlzBL7dnGMQ';
+  // Anon Key BARU dari Supabase
+  static const String supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZGpmYWR3ZGJodHBpdGt5aGhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ5NTY2MzAsImV4cCI6MjExMDUzMjYzMH0.Xctzmn292CiC0jq99bK0pPeniMVRiacU5esDYa_ixIo';
 
-  // Cek apakah URL sudah diisi (bukan kosong)
+  // Cek apakah konfigurasi sudah diisi
   static bool get isConfigured => supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
 
-  // Cek format URL valid (harus diawali http/https)
+  // Cek format URL valid
   static bool isValidUrl(String url) {
     return url.startsWith('http://') || url.startsWith('https://');
   }
